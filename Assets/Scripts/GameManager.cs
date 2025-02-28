@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement; // Add this namespace
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private int score = 0;
+    public int score = 0;
     public int targetScore = 4; // Score to reach before changing scenes
 
     void Awake()
@@ -20,20 +20,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    // Modify this function
     public void IncrementScore()
     {
         score++;
         Debug.Log("Score: " + score);
 
-        if (score >= targetScore)
-        {
-            LoadNewScene();
-        }
     }
-
-    void LoadNewScene()
+    // Change the name of this Function 
+    public void LoadNextScene()
     {
-        SceneManager.LoadScene("VictoryScene"); // Use your new scene's name
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1 );
     }
 }
+
